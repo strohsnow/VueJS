@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Калькулятор</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+            }
+            .calculator {
+                width: 220px;
+                margin: 50px auto;
+                padding: 15px;
+                border: 2px solid #333;
+                border-radius: 10px;
+                background-color: #f4f4f4;
+            }
+            #display {
+                width: 100%;
+                height: 40px;
+                font-size: 20px;
+                text-align: right;
+                margin-bottom: 10px;
+                padding-right: 5px;
+                border: 1px solid #333;
+                border-radius: 5px;
+            }
+            .buttons {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 5px;
+            }
+            button {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+                cursor: pointer;
+                border: none;
+                border-radius: 5px;
+                background-color: #ddd;
+            }
+            button:active {
+                background-color: #bbb;
+            }
+            .operator {
+                background-color: #ff9500;
+                color: white;
+            }
+            .operator:active {
+                background-color: #cc7600;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="calculator">
+            <input type="text" id="display" disabled />
+            <div class="buttons">
+                <button onclick="append_num(1)">1</button>
+                <button onclick="append_num(2)">2</button>
+                <button onclick="append_num(3)">3</button>
+                <button class="operator" onclick="set_operator('+')">+</button>
+
+                <button onclick="append_num(4)">4</button>
+                <button onclick="append_num(5)">5</button>
+                <button onclick="append_num(6)">6</button>
+                <button class="operator" onclick="set_operator('-')">-</button>
+
+                <button onclick="append_num(7)">7</button>
+                <button onclick="append_num(8)">8</button>
+                <button onclick="append_num(9)">9</button>
+                <button class="operator" onclick="set_operator('*')">×</button>
+
+                <button onclick="clear_display()">C</button>
+                <button onclick="append_num(0)">0</button>
+                <button onclick="calculate_result()">=</button>
+                <button class="operator" onclick="set_operator('/')">/</button>
+            </div>
+        </div>
+        <script>
+            let first_num = "";
+            let second_num = "";
+            let operator = null;
+            let new_num = false;
+
+            function append_num(num) {
+                let display = document.getElementById("display");
+
+                if (new_num) {
+                    display.value = num;
+                    new_num = false;
+                } else {
+                    display.value += num;
+                }
+
+                if (operator === null) {
+                    first_num += num;
+                } else {
+                    second_num += num;
+                }
+            }
+
+            function set_operator(op) {
+                if (first_num === "") {
+                    return;
+                }
+                operator = op;
+                new_num = true;
+            }
+
+            function clear_display() {
+                document.getElementById("display").value = "";
+                first_num = "";
+                second_num = "";
+                operator = null;
+                new_num = false;
+            }
+
+            function calculate_result() {
+                if (first_num === "" || second_num === "" || operator === null) {
+                    return;
+                }
+                let result;
+                switch (operator) {
+                    case "+":
+                        result = parseFloat(first_num) + parseFloat(second_num);
+                        break;
+                    case "-":
+                        result = parseFloat(first_num) - parseFloat(second_num);
+                        break;
+                    case "*":
+                        result = parseFloat(first_num) * parseFloat(second_num);
+                        break;
+                    case "/":
+                        result = second_num === "0" ? "Ошибка" : parseFloat(first_num) / parseFloat(second_num);
+                        break;
+                }
+
+                document.getElementById("display").value = result;
+                first_num = result.toString();
+                second_num = "";
+                operator = null;
+                new_num = true;
+            }
+        </script>
+    </body>
+</html>

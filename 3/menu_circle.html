@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Меню и круг</title>
+        <style>
+            .top-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background: #f8f8f8;
+                border-bottom: 1px solid #ddd;
+                z-index: 1000;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            .top-menu ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: flex;
+            }
+            .top-menu li {
+                margin: 0;
+            }
+            .top-menu a {
+                display: block;
+                padding: 15px 20px;
+                color: #333;
+                text-decoration: none;
+                font-family: sans-serif;
+                font-size: 16px;
+            }
+            .top-menu a:hover {
+                background: #e0e0e0;
+            }
+
+            body {
+                margin: 0;
+                padding-top: 52px;
+            }
+
+            .circle {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background-color: blue;
+                position: absolute;
+                left: 0;
+                top: 0;
+                pointer-events: none;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="top-menu">
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Каталог</a></li>
+                <li><a href="#">Контакты</a></li>
+                <li><a href="#">О нас</a></li>
+            </ul>
+        </nav>
+
+        <div style="height: 2000px; padding: 20px">
+            <h1>Добро пожаловать!</h1>
+        </div>
+
+        <div class="circle"></div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const circle = document.querySelector(".circle");
+                document.addEventListener("mousemove", function (e) {
+                    circle.style.left = e.pageX - 30 + "px";
+                    circle.style.top = e.pageY - 30 + "px";
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Пример страницы</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.5;
+                color: #333;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+
+            header {
+                padding: 20px 0;
+                text-align: center;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+
+            nav {
+                background-color: #f2f2f2;
+            }
+            nav ul {
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                padding: 10px 0;
+                gap: 40px;
+            }
+            nav ul li a {
+                text-decoration: underline;
+                color: #6a0dad;
+                font-size: 1em;
+            }
+
+            main {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                padding: 20px 0;
+            }
+
+            .characteristic {
+                background-color: #f2f2f2;
+                width: 80%;
+                min-height: 150px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 15px;
+            }
+            .characteristic h2 {
+                font-size: 1.2em;
+                margin-bottom: auto;
+            }
+
+            .columns {
+                display: flex;
+                justify-content: space-between;
+                width: 80%;
+                gap: 20px;
+            }
+            .column {
+                background-color: #f2f2f2;
+                flex: 1;
+                min-height: 150px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 15px;
+            }
+            .column h3 {
+                font-size: 1.1em;
+                margin-bottom: auto;
+            }
+
+            footer {
+                background-color: #f2f2f2;
+                text-align: center;
+                padding: 20px 0;
+            }
+            footer p {
+                font-size: 0.9em;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Логотип</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#">Домой</a></li>
+                <li><a href="#">Товары</a></li>
+                <li><a href="#">Услуги</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section class="characteristic">
+                <h2>Характеристика</h2>
+            </section>
+
+            <section class="columns">
+                <div class="column">
+                    <h3>Колонка 1</h3>
+                </div>
+                <div class="column">
+                    <h3>Колонка 2</h3>
+                </div>
+                <div class="column">
+                    <h3>Колонка 3</h3>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© MEPhI 2023</p>
+        </footer>
+    </body>
+</html>

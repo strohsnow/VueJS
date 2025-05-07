@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  color: #333;
+  min-height: 100vh;
+}
+
+header {
+  padding: 20px 0;
+  text-align: center;
+}
+header h1 {
+  font-size: 2em;
+}
+
+nav {
+  background-color: #f2f2f2;
+}
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 10px 0;
+  gap: 40px;
+}
+nav ul li a {
+  text-decoration: underline;
+  color: #6a0dad;
+  font-size: 1em;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+  gap: 20px;
+  padding: 20px 0;
+}
+main .characteristic {
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 15px;
+  width: 80%;
+  min-height: 150px;
+}
+main .characteristic h2 {
+  font-size: 1.2em;
+}
+main .columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 80%;
+  gap: 20px;
+}
+main .columns .column {
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 15px;
+  flex: 1;
+  min-height: 150px;
+}
+main .columns .column h3 {
+  font-size: 1.1em;
+}
+
+footer {
+  background-color: #f2f2f2;
+  text-align: center;
+  padding: 20px 0;
+}
+footer p {
+  font-size: 0.9em;
+}
+
+/*# sourceMappingURL=layout.css.map */

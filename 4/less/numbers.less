@@ -1,0 +1,19 @@
+@max: 256;
+
+.generate-colors(@n) when (@n <= @max) {
+    li:nth-child(@{n}) {
+        color: rgb(@n, (@max - @n), 0);
+    }
+    .generate-colors(@n + 1);
+}
+
+.generate-colors(@n) when (@n > @max) {
+}
+
+ul.numbers {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .generate-colors(1);
+}

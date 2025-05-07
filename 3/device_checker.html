@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Определение устройства</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            body::before {
+                content: "Desktop";
+                font-size: 3em;
+            }
+
+            @media (max-width: 1024px) and (min-width: 769px) {
+                body::before {
+                    content: "Tablet";
+                }
+            }
+
+            @media (max-width: 768px) {
+                body::before {
+                    content: "Mobile";
+                }
+            }
+        </style>
+    </head>
+    <body></body>
+</html>

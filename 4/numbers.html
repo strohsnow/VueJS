@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Цветной список чисел</title>
+        <link rel="stylesheet" href="css/numbers.css" />
+    </head>
+    <body>
+        <ul class="numbers"></ul>
+        <script>
+            const ul = document.querySelector(".numbers");
+            for (let i = 1; i <= 256; i++) {
+                const li = document.createElement("li");
+                li.textContent = i;
+                ul.appendChild(li);
+            }
+        </script>
+    </body>
+</html>

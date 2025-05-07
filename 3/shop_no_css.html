@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
+        <title>HTML Basics, DOM API</title>
+    </head>
+    <style>
+        body {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+    <body>
+        <h1>Добро пожаловать!</h1>
+        <p><i>Приветствуем</i> <u>вас</u> <b>в нашем</b> <a href="https://example.com">магазинe!</a></p>
+        <p>
+            &lt;h1&gt;Теорема Пифагора&lt;/h1&gt;: <i>c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup></i>
+        </p>
+
+        <table border>
+            <tr>
+                <td>Информация</td>
+            </tr>
+            <tr>
+                <td>Старая цена: <s>1000</s> ₽</td>
+                <td>Новая цена: 500 ₽</td>
+            </tr>
+        </table>
+
+        <div class="counter_container">
+            <p>Счетчик кликов:</p>
+            <span id="counter">0</span>
+            <button id="clicker">Кликни!</button>
+            <p>Среднее количество кликов в секунду:</p>
+            <span id="average">0</span>
+        </div>
+
+        <script>
+            document.addEventListener("selectstart", (event) => {
+                event.preventDefault();
+            });
+
+            document.addEventListener("copy", (event) => {
+                event.preventDefault();
+            });
+
+            document.addEventListener("cut", (event) => {
+                event.preventDefault();
+            });
+
+            document.addEventListener("contextmenu", (event) => {
+                event.preventDefault();
+            });
+
+            const counter_elem = document.getElementById("counter");
+            let counter = localStorage.getItem("clickCounter") ? parseInt(localStorage.getItem("clickCounter")) : 0;
+            counter_elem.textContent = counter;
+
+            const average_elem = document.getElementById("average");
+            let first_click_time = localStorage.getItem("firstClickTime")
+                ? parseInt(localStorage.getItem("firstClickTime"))
+                : null;
+            function updateAverage() {
+                if (first_click_time) {
+                    const current_time = Date.now();
+                    const elapsed_time = (current_time - first_click_time) / 1000;
+                    const average = (counter / elapsed_time).toFixed(2);
+                    average_elem.textContent = average;
+                }
+            }
+
+            const button = document.getElementById("clicker");
+            button.addEventListener("click", () => {
+                counter++;
+                counter_elem.textContent = counter;
+                localStorage.setItem("clickCounter", counter);
+                if (!first_click_time) {
+                    first_click_time = Date.now();
+                    localStorage.setItem("firstClickTime", first_click_time);
+                }
+                updateAverage();
+            });
+
+            updateAverage();
+        </script>
+    </body>
+</html>

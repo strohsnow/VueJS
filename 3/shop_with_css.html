@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <title>HTML Basics, DOM API</title>
+        <style>
+            body {
+                user-select: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                margin: 20px;
+                font-family: Georgia, serif;
+            }
+
+            .comic {
+                font-family: "Comic Sans MS", cursive, sans-serif;
+                font-size: 1.3rem;
+            }
+
+            table {
+                background-color: cyan;
+                border-collapse: collapse;
+                width: 50%;
+            }
+            th,
+            td {
+                border: 1px solid black;
+                padding: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Добро пожаловать!</h1>
+        <p id="greeting">
+            <i>Приветствуем</i> <u>вас</u> <b>в нашем</b>
+            <a href="https://example.com">магазинe!</a>
+        </p>
+        <p>
+            &lt;h1&gt;
+            <span class="comic">Теорема Пифагора</span>
+            &lt;/h1&gt;:
+            <i>c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup></i>
+        </p>
+
+        <table border>
+            <tr>
+                <td>Информация</td>
+            </tr>
+            <tr>
+                <td>Старая цена: <s>1000</s> ₽</td>
+                <td>Новая цена: 500 ₽</td>
+            </tr>
+        </table>
+
+        <script>
+            const colors = ["red", "blue"];
+            let idx = 0;
+
+            const nodes = document.querySelectorAll("#greeting i, #greeting u, #greeting b");
+            nodes.forEach((el) => {
+                const text = el.textContent;
+                el.textContent = "";
+                for (const ch of text) {
+                    if (ch === " ") {
+                        el.appendChild(document.createTextNode(" "));
+                    } else {
+                        const span = document.createElement("span");
+                        span.textContent = ch;
+                        span.style.color = colors[idx % colors.length];
+                        idx++;
+                        el.appendChild(span);
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

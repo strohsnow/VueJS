@@ -1,0 +1,8 @@
+ul.numbers
+    list-style: none
+    padding: 0
+    margin: 0
+
+    @for $n from 1 through 256
+        li:nth-child(#{$n})
+            color: rgb($n, 256 - $n, 0)

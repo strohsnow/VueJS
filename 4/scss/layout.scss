@@ -1,0 +1,99 @@
+@mixin reset() {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin flex($dir, $justify: flex-start, $align: center) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin block-section($bg: #f2f2f2, $pt: 15px) {
+    background-color: $bg;
+    @include flex(column, flex-start, center);
+    padding-top: $pt;
+}
+
+* {
+    @include reset();
+}
+
+body {
+    @include flex(column, flex-start, stretch);
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: #333;
+    min-height: 100vh;
+}
+
+header {
+    padding: 20px 0;
+    text-align: center;
+
+    h1 {
+        font-size: 2em;
+    }
+}
+
+nav {
+    background-color: #f2f2f2;
+
+    ul {
+        @include flex(row, center, center);
+        list-style: none;
+        padding: 10px 0;
+        gap: 40px;
+
+        li a {
+            text-decoration: underline;
+            color: #6a0dad;
+            font-size: 1em;
+        }
+    }
+}
+
+main {
+    @include flex(column, flex-start, center);
+    flex: 1;
+    gap: 20px;
+    padding: 20px 0;
+
+    .characteristic {
+        @include block-section();
+        width: 80%;
+        min-height: 150px;
+
+        h2 {
+            font-size: 1.2em;
+        }
+    }
+
+    .columns {
+        @include flex(row, space-between, flex-start);
+        width: 80%;
+        gap: 20px;
+
+        .column {
+            @include block-section();
+            flex: 1;
+            min-height: 150px;
+
+            h3 {
+                font-size: 1.1em;
+            }
+        }
+    }
+}
+
+footer {
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 20px 0;
+
+    p {
+        font-size: 0.9em;
+    }
+}
